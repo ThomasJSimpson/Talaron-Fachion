@@ -1,0 +1,124 @@
+Étape 1 — Ouvrir Postman
+
+➡️ Démarre ton serveur Node :
+
+npm run dev
+
+
+Vérifie dans la console :
+
+✅ Connexion à MongoDB réussie !
+🚀 Listening on port 3000
+
+✅ Étape 2 — Requête POST : créer un Thing
+
+1️⃣ Dans Postman :
+
+Clique New → HTTP Request
+
+Méthode : POST
+
+URL :
+
+http://localhost:3000/api/things
+
+
+2️⃣ Onglet Body
+
+Choisir : raw
+
+Choisir format : JSON
+
+Colle ceci :
+
+{
+  "title": "T-shirt",
+  "description": "100% Coton Bio",
+  "imageUrl": "https://example.com/img1.jpg",
+  "userId": "u123456",
+  "price": 19.90
+}
+
+
+3️⃣ Clique Send
+
+✅ Attendu :
+
+Status : 201 Created
+
+Body JSON = l’objet créé avec un _id généré
+ex :
+
+{
+  "_id": "67a000ffe28354cdfd7f05aa",
+  "title": "T-shirt",
+  "description": "100% Coton Bio",
+  "imageUrl": "https://example.com/img1.jpg",
+  "userId": "u123456",
+  "price": 19.9,
+  "createdAt": "...",
+  "updatedAt": "..."
+}
+
+
+⚠️ conserve le _id → on en aura besoin pour la suite
+
+✅ Étape 3 — Requête GET : liste des Things
+
+Nouvelle requête :
+
+Méthode : GET
+URL :
+
+http://localhost:3000/api/things
+
+
+Cliquer Send ✅
+
+Résultat attendu :
+
+Status : 200
+
+Tableau JSON contenant ton produit
+
+✅ Étape 4 — Requête GET avec ID
+
+Méthode : GET
+URL :
+
+http://localhost:3000/api/things/<ID>
+
+
+ex :
+
+http://localhost:3000/api/things/67a000ffe28354cdfd7f05aa
+
+
+Clique Send
+
+Résultat attendu :
+
+Status : 200
+
+Le produit unique
+
+📌 Résumé visuel dans Postman
+Méthode	URL	Body	Résultat attendu
+POST	/api/things	✅ JSON	201 + objet créé
+GET	/api/things	❌	200 + tableau
+GET	/api/things/:id	❌	200 + objet unique
+💡 Bonus : Best Practices pour ton projet
+
+Dans Postman 💪 :
+
+✅ Crée une Collection "TEMPLATE_BACKEND"
+
+✅ Ajoute dedans :
+
+Create Thing
+
+Get All Things
+
+Get One Thing
+
+➡️ pour retester ton API plus tard en 1 clic
